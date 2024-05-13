@@ -28,6 +28,11 @@
         font-size: 18px;
         color: #333;
     }
+    .filter1-title {
+        margin-top: 0;
+        font-size: 9px;
+        color: #333;
+    }
 
     /* Στυλ για τα dropdowns */
     .filter-select {
@@ -54,6 +59,16 @@
         width: 100%;
         padding: 10px;
         background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .name-panel button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4604c0;
         color: white;
         border: none;
         border-radius: 5px;
@@ -93,10 +108,31 @@
     /* Στυλ για τον τίτλο του δεύτερου πάνελ */
     .photo-title {
         margin-top: 0;
-        font-size: 18px;
+        font-size: 30px;
         color: #333;
         text-align: center;
     }
+    .name-title {
+        margin-top: 0;
+        font-size: 13px;
+        color: #333;
+        text-align: center;
+    }
+    .name-field {
+        position:absolute;
+        margin-top: -20px;
+        right: 600px;
+        height:550px;
+        width: 370px;
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-height: auto;
+
+    }
+
+
 
     /* Στυλ για τις φωτογραφίες */
     .car-photo {
@@ -109,6 +145,14 @@
         position: relative;
         left: 370px;
     }
+    .password-container input {
+    flex: 1;
+    background-color: #e9e9e9;
+    color: #000000;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: none;
+}
 </style>
 </head>
 
@@ -116,7 +160,7 @@
 <h2 class="center-text" style="font-size: 38px; margin-top: 20px;">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
 <div class="grid-container">
     <!-- Πάνελ φίλτρων -->
-    <div class="filter-panel">
+    <div class="filter-panel"id="filterid">
         <h3 class="filter-title">Επιλέξτε φίλτρα:</h3>
         <div>
             <h4 class="filter-title">Μάρκα:</h4>
@@ -163,24 +207,60 @@
 
     <button onclick="applyFilter()">Εφαρμογή Φίλτρου</button>
     </div>
-    <div class="photo-panel">
+    <div class="photo-panel"id="carpanel">
         <h3 class="photo-title">Διαθέσιμα Αυτοκίνητα</h3>
         <img class="car-photo" src="mercedes.jpg" alt="Mercedes" id="mercedesPhoto"style="display: none;"/>
-        <h4 style="display: none;"id="textmerc1800">40€/ημέρα</h4>
+        <h4 style="display: none;"id="textmerc1800"value="40">40€/ημέρα</h4>
         <img class="car-photo" src="mercedes1.jpg" alt="Mercedes" id="mercedesPhoto1"style="display: none;"/>
-        <h4 style="display: none;"id="textmerc1600">32€/ημέρα</h4>
+        <h4 style="display: none;"id="textmerc1600"value="32">32€/ημέρα</h4>
         <img class="car-photo" src="mercedes2.jpg" alt="Mercedes" id="mercedesPhoto2"style="display: none;"/>
         <h4 style="display: none;"id="textmerc2000">60€/ημέρα</h4>
         <img class="car-photo" src="audi1600.jpg" alt="Audi" id="audi1600"style="display: none;"/>
+        <h4 style="display: none;"id="textmerc1600">32€/ημέρα</h4>
         <img class="car-photo" src="audi1800.jpg" alt="Audi" id="audi1800"style="display: none;"/>
+        <h4 style="display: none;"id="textmerc1800">40€/ημέρα</h4>
         <img class="car-photo" src="audi2000.jpg" alt="Audi" id="audi2000"style="display: none;"/>
+        <h4 style="display: none;"id="textmerc2000">60€/ημέρα</h4>
         <div class="car-checkbox">
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"style="display: none;">
         </div>
         <img class="car-photo" src="nissan.jpg" alt="Nissan"id="nissanPhoto" style="display: none;"/>
         <div class="filter-panel"style="display: none;"id="applycarbutton">
-            <button onclick="applyCar()"style="display: none;"id="applycarbutton1">Επιλογή Αυτοκινήτου</button>
+            <button onclick="selectCar()"style="display: none;"id="applycarbutton1">Επιλογή Αυτοκινήτου</button>
             </div>
+    </div>
+    <div class="grid-container">
+        <div class="name-field"style="display: none;"id="name1">
+            <div class="name-title">
+            <h1>Συμπληρώστε τα στοιχεία σας</h1>
+            </div>
+          
+            <div class="password-container">
+           <br><br> <input type="text" id="Name" style="font-size:13pt" size="20" placeholder="  Ονομα"><br><br>
+           <br> <input type="text" id="Surname" style="font-size:13pt" size="20" placeholder="  Επώνυμο"><br><br>
+           <div class="filter1-title">
+            <h1>Ημερομηνία γέννησης</h1>
+           <br> <input type="date" id="dateOfBirth" style="font-size:13pt" size="20" placeholder="Ηλικία"><br><br>
+           </div>
+           <br> <input type="email" id="email" style="font-size:13pt" size="20" placeholder="  email"><br><br>
+           <br> <input type="number" id="phoneNumber" style="font-size:13pt" size="20" placeholder="  Τηλέφωνο Επικοινωνίας"><br><br>
+           <input type="checkbox" id="cash" name="cash" value="cash" onchange="handleCheckboxChange(this)">
+           <label for="cash"> Μετρητά στο κατάστημα </label><br><br>
+           
+           <input type="checkbox" id="credit" name="credit" value="credit" onchange="handleCheckboxChange(this)">
+           <label for="credit">Χρεωστική/Πιστωτική Κάρτα</label><br>
+           <br><div style="font-size: large;" id="rental-days-container"></div><br>
+           <div class="name-panel">
+           <button onclick="payment()"style="display: block;"id="applycarbutt1">Πληρωμή αυτοκινήτου</button>
+           
+           
+
+           </div>
+                </div>
+        </div>
+
+        
+
     </div>
 </div>
 <script>
@@ -190,8 +270,18 @@
         $("#return-date").datepicker();
     });
 
-    
+   
 </script>
+
+<script>
+    function handleCheckboxChange(checkbox) {
+      var otherCheckboxId = checkbox.id === 'cash' ? 'credit' : 'cash'; // Ανάλογα ποιο checkbox επιλέγεται, βρίσκουμε το ID του άλλου
+      var otherCheckbox = document.getElementById(otherCheckboxId);
+      if (checkbox.checked) {
+        otherCheckbox.checked = false; // Απενεργοποίηση του άλλου checkbox
+      }
+    }
+    </script>
 <script>
  function applyFilter() {
         var pickupDate = document.getElementById("pickup-date").value;
@@ -200,10 +290,10 @@
 
         // Έλεγχος αν οι ημερομηνίες είναι κενές
         
-       // if (pickupDate === "" || returnDate === "") {
-         //   errorMessage.innerText = "Παρακαλώ εισάγετε τις ημερομηνίες παραλαβής και επιστροφής.";
-           // return;
-       // }
+       if (pickupDate === "" || returnDate === "") {
+           errorMessage.innerText = "Παρακαλώ εισάγετε τις ημερομηνίες παραλαβής και επιστροφής.";
+         return;
+       }
         // Εδώ μπορείτε να συνεχίσετε με την εφαρμογή του φίλτρου
         var brandFilter = document.getElementsByClassName("filter-select")[0].value;
         var engineFilter = document.getElementsByClassName("filter-select")[1].value;
@@ -215,12 +305,16 @@ if (brandFilter == "Mercedes" &&  engineFilter == "1600cc") {
     document.getElementById("mercedesPhoto1").style.display = "block";
     document.getElementById("mercedesPhoto").style.display = "none";
     document.getElementById("mercedesPhoto2").style.display = "none";
-    document.getElementById("vehicle1").style.display = "block";
     document.getElementById("textmerc1600").style.display = "block";
     document.getElementById("textmerc1800").style.display = "none";
     document.getElementById("textmerc2000").style.display = "none";
+    document.getElementById("audi1600").style.display = "none";
+    document.getElementById("audi1800").style.display = "none";
+    document.getElementById("audi2000").style.display = "none";
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
+    document.getElementById("name1").style.display = "none";
+    testvalue=32;
 }else if (brandFilter=="Mercedes" && engineFilter =="1800cc"){
     document.getElementById("mercedesPhoto").style.display = "block";
     document.getElementById("mercedesPhoto1").style.display = "none";
@@ -228,6 +322,13 @@ if (brandFilter == "Mercedes" &&  engineFilter == "1600cc") {
     document.getElementById("textmerc1800").style.display = "block";
     document.getElementById("textmerc1600").style.display = "none";
     document.getElementById("textmerc2000").style.display = "none";
+    document.getElementById("audi1600").style.display = "none";
+    document.getElementById("audi1800").style.display = "none";
+    document.getElementById("audi2000").style.display = "none";
+    document.getElementById("applycarbutton").style.display = "block";
+    document.getElementById("applycarbutton1").style.display = "block";
+    document.getElementById("name1").style.display = "none";
+    testvalue=40;
 }else if(brandFilter =="Mercedes" && engineFilter =="2000cc"){
     document.getElementById("mercedesPhoto2").style.display = "block";
     document.getElementById("mercedesPhoto1").style.display = "none";
@@ -235,24 +336,94 @@ if (brandFilter == "Mercedes" &&  engineFilter == "1600cc") {
     document.getElementById("textmerc2000").style.display = "block";
     document.getElementById("textmerc1800").style.display = "none";
     document.getElementById("textmerc1600").style.display = "none";
+    document.getElementById("audi1600").style.display = "none";
+    document.getElementById("audi1800").style.display = "none";
+    document.getElementById("audi2000").style.display = "none";
+    document.getElementById("applycarbutton").style.display = "block";
+    document.getElementById("applycarbutton1").style.display = "block";
+    document.getElementById("name1").style.display = "none";
+    testvalue=60;
 }else  if (brandFilter == "Audi" &&  engineFilter == "1600cc") {
     document.getElementById("audi1600").style.display = "block";
     document.getElementById("audi1800").style.display = "none";
     document.getElementById("audi2000").style.display = "none";
+    document.getElementById("textmerc1600").style.display = "block";
+    document.getElementById("textmerc1800").style.display = "none";
+    document.getElementById("textmerc2000").style.display = "none";
+    document.getElementById("mercedesPhoto1").style.display = "none";
+    document.getElementById("mercedesPhoto").style.display = "none";
+    document.getElementById("mercedesPhoto2").style.display = "none";
+    document.getElementById("applycarbutton").style.display = "block";
+    document.getElementById("applycarbutton1").style.display = "block";
+    document.getElementById("name1").style.display = "none";
+    testvalue=32;
 }else if (brandFilter=="Audi" && engineFilter =="1800cc"){
     document.getElementById("audi1800").style.display = "block";
     document.getElementById("audi1600").style.display = "none";
     document.getElementById("audi2000").style.display = "none";
+    document.getElementById("textmerc1600").style.display = "none";
+    document.getElementById("textmerc1800").style.display = "block";
+    document.getElementById("textmerc2000").style.display = "none";
+    document.getElementById("mercedesPhoto1").style.display = "none";
+    document.getElementById("mercedesPhoto").style.display = "none";
+    document.getElementById("mercedesPhoto2").style.display = "none";
+    document.getElementById("applycarbutton").style.display = "block";
+    document.getElementById("applycarbutton1").style.display = "block";
+    document.getElementById("name1").style.display = "none";
+    testvalue=42;
 }else if(brandFilter =="Audi" && engineFilter =="2000cc"){
     document.getElementById("audi2000").style.display = "block";
     document.getElementById("audi1600").style.display = "none";
     document.getElementById("audi1800").style.display = "none";
+    document.getElementById("textmerc1600").style.display = "none";
+    document.getElementById("textmerc1800").style.display = "none";
+    document.getElementById("textmerc2000").style.display = "block";
+    document.getElementById("mercedesPhoto1").style.display = "none";
+    document.getElementById("mercedesPhoto").style.display = "none";
+    document.getElementById("mercedesPhoto2").style.display = "none";
+    document.getElementById("applycarbutton").style.display = "block";
+    document.getElementById("applycarbutton1").style.display = "block";
+    document.getElementById("name1").style.display = "none";
+    testvalue=60;
 }
 
         
         
 }
 </script>
+<script>
+function selectCar(){
+    document.getElementById("name1").style.display = "block";
+    var pickupDate = $("#pickup-date").datepicker("getDate");
+    var returnDate = $("#return-date").datepicker("getDate");
 
+    if (pickupDate && returnDate) {
+        var millisecondsPerDay = 1000 * 60 * 60 * 24;
+        var difference = returnDate.getTime() - pickupDate.getTime();
+        var days = Math.ceil(difference / millisecondsPerDay);
+
+        // Εμφανίζουμε τον αριθμό των ημερών στον κατάλληλο container
+        $("#rental-days-container").text( days +" ημέρες ενοικίασης και το κόστος είναι "+days*testvalue+"€");
+    } else {
+        console.log("Παρακαλώ επιλέξτε τις ημερομηνίες παραλαβής και επιστροφής.");
+    }
+
+
+}
+
+
+
+</script>
+<script>
+    function payment(){
+        document.getElementById("name1").style.display = "none";
+        document.getElementById("carpanel").style.display = "none";
+        document.getElementById("filterid").style.display = "none";
+
+    }
+
+
+
+</script>
 </body>
 </html>
