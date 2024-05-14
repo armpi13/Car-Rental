@@ -119,9 +119,8 @@
         text-align: center;
     }
     .name-field {
-        position:absolute;
         margin-top: -20px;
-        right: 600px;
+        left: auto;
         height:550px;
         width: 370px;
         background-color: #f9f9f9;
@@ -131,7 +130,19 @@
         max-height: auto;
 
     }
+    .card_payment-field {
+        position: fixed;
+        margin-top: 10%;
+        left: 40%;
+        height:42%;
+        width: 17%;
+        background-color: #1cbbdb;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-height: auto;
 
+    }
 
 
     /* Στυλ για τις φωτογραφίες */
@@ -148,7 +159,16 @@
     .password-container input {
     flex: 1;
     background-color: #e9e9e9;
-    color: #000000;
+    color: #ffffff;
+    margin-right: 10px;
+    border-radius: 8px;
+    border: none;
+}
+.card-container input {
+    position: relative;
+    left: 20%;
+    background-color: #20193e;
+    color: #ffffff;
     margin-right: 10px;
     border-radius: 8px;
     border: none;
@@ -157,7 +177,7 @@
 </head>
 
 <body style="background-color: #f2f2f2;">
-<h2 class="center-text" style="font-size: 38px; margin-top: 20px;">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
+<h2 class="center-text" style="font-size: 38px; margin-top: 20px;"id="textTitle">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
 <div class="grid-container">
     <!-- Πάνελ φίλτρων -->
     <div class="filter-panel"id="filterid">
@@ -211,7 +231,7 @@
         <h3 class="photo-title">Διαθέσιμα Αυτοκίνητα</h3>
         <img class="car-photo" src="mercedes.jpg" alt="Mercedes" id="mercedesPhoto"style="display: none;"/>
         <h4 style="display: none;"id="textmerc1800"value="40">40€/ημέρα</h4>
-        <img class="car-photo" src="mercedes1.jpg" alt="Mercedes" id="mercedesPhoto1"style="display: none;"/>
+        <img class="car-photo" src="https://www.mercedes-benz.gr/content/dam/hq/passengercars/cars/a-class/hatchback-w177-fl-pi/modeloverview/08-2022/images/mercedes-benz-a-class-w177-696x392-08-2022.jpg" alt="Mercedes" id="mercedesPhoto1"style="display: none;"/>
         <h4 style="display: none;"id="textmerc1600"value="32">32€/ημέρα</h4>
         <img class="car-photo" src="mercedes2.jpg" alt="Mercedes" id="mercedesPhoto2"style="display: none;"/>
         <h4 style="display: none;"id="textmerc2000">60€/ημέρα</h4>
@@ -251,14 +271,24 @@
            <label for="credit">Χρεωστική/Πιστωτική Κάρτα</label><br>
            <br><div style="font-size: large;" id="rental-days-container"></div><br>
            <div class="name-panel">
-           <button onclick="payment()"style="display: block;"id="applycarbutt1">Πληρωμή αυτοκινήτου</button>
+           <button onclick="payment()"style="display: block;"id="applycarbutt1">Επόμενο Βήμα</button>
            
-           
+            
 
            </div>
                 </div>
         </div>
 
+             <div class="card_payment-field" style="display: none;"id="cardPayment">
+                <div class="card-container">
+                <br> <input type="number" id="cardNumbers" oninput="checkInputLength(this)" style="display: block;" style="font-size: 13pt;"  placeholder="Αριθμός Κάρτας"><br><br>
+                <input type="number" id="cvvNumber" oninput="checkInputLength03(this)" style="display: block;" style="font-size: 13pt;"  placeholder="Αριθμός Ασφαλείας"><br><br>
+                <input type="text" id ="cardHolderName" style="display: block;" style="font-size: 13pt;" placeholder="Ονομα κατόχου"><br><br><br><br><br><br><br><br>
+                <div class="name-panel">
+                <button onclick="" style="display: block;" id="applyCardPayment">Πληρωμή αυτοκινήτου</button>
+                    </div>
+                </div>
+            </div>
         
 
     </div>
@@ -269,6 +299,16 @@
         $("#pickup-date").datepicker();
         $("#return-date").datepicker();
     });
+    function checkInputLength(input) {
+    if (input.value.length > 16) {
+        input.value = input.value.slice(0, 16); // Εάν η τιμή έχει περισσότερους από 16 χαρακτήρες, κόβουμε τα υπόλοιπα
+    }
+}
+function checkInputLength03(input) {
+    if (input.value.length > 3) {
+        input.value = input.value.slice(0, 3);
+    }
+}
 
    
 </script>
@@ -283,7 +323,7 @@
     }
     </script>
 <script>
- function applyFilter() {
+ function applyFilter() { // prwto panel
         var pickupDate = document.getElementById("pickup-date").value;
         var returnDate = document.getElementById("return-date").value;
         var errorMessage = document.getElementById("error-message");
@@ -392,7 +432,7 @@ if (brandFilter == "Mercedes" &&  engineFilter == "1600cc") {
 }
 </script>
 <script>
-function selectCar(){
+function selectCar(){   //to deytero panel
     document.getElementById("name1").style.display = "block";
     var pickupDate = $("#pickup-date").datepicker("getDate");
     var returnDate = $("#return-date").datepicker("getDate");
@@ -410,15 +450,18 @@ function selectCar(){
 
 
 }
-
-
-
 </script>
-<script>
+<script> //to teleytaio panel
     function payment(){
         document.getElementById("name1").style.display = "none";
         document.getElementById("carpanel").style.display = "none";
         document.getElementById("filterid").style.display = "none";
+        document.getElementById("textTitle").style.display = "none";
+        var checkBox = document.getElementById("credit");
+        if(checkBox.checked==true){
+            document.getElementById("cardPayment").style.display = "block";
+        }
+      
 
     }
 
