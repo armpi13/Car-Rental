@@ -6,6 +6,8 @@
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</style>
 <style>
     /* CSS για τοποθέτηση του κειμένου στη μέση της σελίδας */
     .center-text {
@@ -14,7 +16,7 @@
 
     /* CSS για το πάνελ φίλτρων */
     .filter-panel {
-        background-color: #f9f9f9;
+        background-color: #aecf1a;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -78,7 +80,7 @@
 
     /* Όταν το ποντίκι περνάει πάνω από το κουμπί, αλλάζει το χρώμα του φόντου */
     .filter-panel button:hover {
-        background-color: #45a049;
+        background-color: #040704;
     }
 
     /* Στυλ για το μήνυμα λάθους */
@@ -95,15 +97,20 @@
         gap: 20px;
         padding: 20px;
     }
-
+    
     /* CSS για το δεύτερο πάνελ με τις φωτογραφίες */
     .photo-panel {
-        background-color: #f9f9f9;
+        background-color: #aecf1a;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-width: 400px;
     }
+    body {
+    background-image: url('https://www.northgoacarhire.com/assets/img/bg/hero_overlay_2.png');
+    background-size: cover; /* Εξασφαλίζει ότι η εικόνα θα επεκταθεί για να καλύψει ολόκληρη την περιοχή του φόντου */
+    background-repeat: no-repeat; /* Αποτρέπει την επανάληψη της εικόνας */
+}
 
     /* Στυλ για τον τίτλο του δεύτερου πάνελ */
     .photo-title {
@@ -123,27 +130,37 @@
         left: auto;
         height:550px;
         width: 370px;
-        background-color: #f9f9f9;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-height: auto;
 
     }
+
     .card_payment-field {
         position: fixed;
-        margin-top: 10%;
+        margin-top: 3%;
         left: 40%;
         height:42%;
         width: 17%;
-        background-color: #1cbbdb;
+        background-color: #5b4986;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-height: auto;
 
     }
-
+    .payment button {
+        width: 100%;
+        padding: 10px;
+        background-color: #7d7b81;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
     /* Στυλ για τις φωτογραφίες */
     .car-photo {
@@ -156,10 +173,11 @@
         position: relative;
         left: 370px;
     }
+   
     .password-container input {
     flex: 1;
     background-color: #e9e9e9;
-    color: #ffffff;
+    color: #000000;
     margin-right: 10px;
     border-radius: 8px;
     border: none;
@@ -167,17 +185,37 @@
 .card-container input {
     position: relative;
     left: 20%;
-    background-color: #20193e;
+    background-color: #1b1b1b;
     color: #ffffff;
     margin-right: 10px;
     border-radius: 8px;
     border: none;
 }
+.succesfull-payment{
+    position: fixed;
+        margin-top: 3%;
+        left: 10%;
+        height:20%;
+        width: 50%;
+        background-color: #d4d2d8;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-height: auto;
+
+
+
+}
+#paymentTitle {
+    color: white; /* Ορίζει το χρώμα των γραμμάτων σε λευκό */
+}
+
 </style>
 </head>
 
-<body style="background-color: #f2f2f2;">
+
 <h2 class="center-text" style="font-size: 38px; margin-top: 20px;"id="textTitle">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
+<h2 class="center-text" style="font-size: 35px; display: none; margin-top: 20px;"id="paymentTitle">Παρακαλώ πληκτρολογήστε τα στοιχεία τις κάρτας σας!</h2>
 <div class="grid-container">
     <!-- Πάνελ φίλτρων -->
     <div class="filter-panel"id="filterid">
@@ -187,7 +225,6 @@
             <select class="filter-select">
                 <option value="Audi">Audi</option>
                 <option value="Mercedes">Mercedes</option>
-                <option value="Nissan">Nissan</option>
             </select>
         </div>
         <div>
@@ -227,24 +264,23 @@
 
     <button onclick="applyFilter()">Εφαρμογή Φίλτρου</button>
     </div>
-    <div class="photo-panel"id="carpanel">
+    <div class="photo-panel"id="carpanel"style="display: none;">
         <h3 class="photo-title">Διαθέσιμα Αυτοκίνητα</h3>
-        <img class="car-photo" src="mercedes.jpg" alt="Mercedes" id="mercedesPhoto"style="display: none;"/>
+        <img class="car-photo" src="https://www.mercedes-benz.gr/content/dam/hq/passengercars/cars/e-class/e-class-saloon-w214-pi/modeloverview/02-2023/images/mercedes-benz-e-class-w214-modeloverview-696x392-02-2023.jpg" alt="Mercedes" id="mercedesPhoto"style="display: none;"/>
         <h4 style="display: none;"id="textmerc1800"value="40">40€/ημέρα</h4>
         <img class="car-photo" src="https://www.mercedes-benz.gr/content/dam/hq/passengercars/cars/a-class/hatchback-w177-fl-pi/modeloverview/08-2022/images/mercedes-benz-a-class-w177-696x392-08-2022.jpg" alt="Mercedes" id="mercedesPhoto1"style="display: none;"/>
         <h4 style="display: none;"id="textmerc1600"value="32">32€/ημέρα</h4>
-        <img class="car-photo" src="mercedes2.jpg" alt="Mercedes" id="mercedesPhoto2"style="display: none;"/>
+        <img class="car-photo" src="https://www.mercedes-benz.gr/content/dam/hq/passengercars/cars/glc/suv-x254/modeloverview/images/mercedes-benz-glc-suv-x254-modeloverview-696x392-05-2022.png" alt="Mercedes" id="mercedesPhoto2"style="display: none;"/>
         <h4 style="display: none;"id="textmerc2000">60€/ημέρα</h4>
-        <img class="car-photo" src="audi1600.jpg" alt="Audi" id="audi1600"style="display: none;"/>
-        <h4 style="display: none;"id="textmerc1600">32€/ημέρα</h4>
-        <img class="car-photo" src="audi1800.jpg" alt="Audi" id="audi1800"style="display: none;"/>
-        <h4 style="display: none;"id="textmerc1800">40€/ημέρα</h4>
-        <img class="car-photo" src="audi2000.jpg" alt="Audi" id="audi2000"style="display: none;"/>
-        <h4 style="display: none;"id="textmerc2000">60€/ημέρα</h4>
+        <img class="car-photo" src="https://mediaservice.audi.com/media/fast/H4sIAAAAAAAAAFvzloG1tIiBOTrayfuvpGh6-m1zJgaGigIGBgZGoDhTtNOaz-I_2DhCHsCEtzEwF-SlMwJZKUycmbmJ6an6QD4_I3taTmV-aUkxO0grz6pgWxm7xpMnfjEeuyxSJBRt7_HkKAMrUBdTPpBgbgASvBuBBMdtBjAJMu89iGgA8ZnMmBkYWCuAjEgGEODjKy3KKUgsSszVK89MKckQ1DAgEgizu7iGOHr6BAMA0qnK_-kAAAA?wid=850" alt="Audi" id="audi1600"style="display: none;"/>
+        <h4 style="display: none;"id="textaudi1600">32€/ημέρα</h4>
+        <img class="car-photo" src="https://mediaservice.audi.com/media/fast/H4sIAAAAAAAAAFvzloG1tIiBOTrayfuvpGh6-m1zJgaGigIGBgZGoDhTtNOaz-I_2DhCHsCEtzEwF-SlMwJZKUycmbmJ6an6QD4_I3taTmV-aUkxO0grz9-zLDvee5xsnNOiJKdyR5gt2StYjIEVqIvRDUgwpwIJvv1AglOWAUyCzJsEIgpAfCYHZgYG1gogI5IBBPj4SotyChKLEnP1yjNTSjIENQyIBMLsLq4hjp4-wQCN5cnx6QAAAA?wid=850" alt="Audi" id="audi1800"style="display: none;"/>
+        <h4 style="display: none;"id="textaudi1800">40€/ημέρα</h4>
+        <img class="car-photo" src="https://mediaservice.audi.com/media/fast/H4sIAAAAAAAAAFvzloG1tIiBOTrayfuvpGh6-m1zJgaGigIGBgZGoDhTtNOaz-I_2DhCHsCEtzEwF-SlMwJZKUycmbmJ6an6QD4_I3taTmV-aUkxO0grT2ddr37QpqLUVT3Xey5MkPIsv2wZwsAK1MXoASSYngEJvl1AgtObAUyCzJsLIuxAfCYrZgYG1gogI5IBBPj4SotyChKLEnP1yjNTSjIENQyIBMLsLq4hjp4-wQBAHJaY6QAAAA?wid=850" alt="Audi" id="audi2000"style="display: none;"/>
+        <h4 style="display: none;"id="textmaudi2000">60€/ημέρα</h4>
         <div class="car-checkbox">
         <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"style="display: none;">
         </div>
-        <img class="car-photo" src="nissan.jpg" alt="Nissan"id="nissanPhoto" style="display: none;"/>
         <div class="filter-panel"style="display: none;"id="applycarbutton">
             <button onclick="selectCar()"style="display: none;"id="applycarbutton1">Επιλογή Αυτοκινήτου</button>
             </div>
@@ -260,7 +296,7 @@
            <br> <input type="text" id="Surname" style="font-size:13pt" size="20" placeholder="  Επώνυμο"><br><br>
            <div class="filter1-title">
             <h1>Ημερομηνία γέννησης</h1>
-           <br> <input type="date" id="dateOfBirth" style="font-size:13pt" size="20" placeholder="Ηλικία"><br><br>
+           <br> <input type="date" id="dateOfBirth" style="font-size:13pt" max="2003-12-31" size="20" placeholder="Ηλικία"><br><br>
            </div>
            <br> <input type="email" id="email" style="font-size:13pt" size="20" placeholder="  email"><br><br>
            <br> <input type="number" id="phoneNumber" style="font-size:13pt" size="20" placeholder="  Τηλέφωνο Επικοινωνίας"><br><br>
@@ -270,8 +306,10 @@
            <input type="checkbox" id="credit" name="credit" value="credit" onchange="handleCheckboxChange(this)">
            <label for="credit">Χρεωστική/Πιστωτική Κάρτα</label><br>
            <br><div style="font-size: large;" id="rental-days-container"></div><br>
+           
            <div class="name-panel">
            <button onclick="payment()"style="display: block;"id="applycarbutt1">Επόμενο Βήμα</button>
+           <div id="error-message" class="error-message"></div>
            
             
 
@@ -283,25 +321,47 @@
                 <div class="card-container">
                 <br> <input type="number" id="cardNumbers" oninput="checkInputLength(this)" style="display: block;" style="font-size: 13pt;"  placeholder="Αριθμός Κάρτας"><br><br>
                 <input type="number" id="cvvNumber" oninput="checkInputLength03(this)" style="display: block;" style="font-size: 13pt;"  placeholder="Αριθμός Ασφαλείας"><br><br>
-                <input type="text" id ="cardHolderName" style="display: block;" style="font-size: 13pt;" placeholder="Ονομα κατόχου"><br><br><br><br><br><br><br><br>
-                <div class="name-panel">
-                <button onclick="" style="display: block;" id="applyCardPayment">Πληρωμή αυτοκινήτου</button>
+                <input type="text" id ="cardHolderName" style="display: block;" style="font-size: 13pt;" placeholder="Ονομα κατόχου"><br><br>
+                <input type="month" id ="dateofcard" min="2025-01" style="display: block;" style="font-size: 13pt;" placeholder="Ημερομηνία λήξης"><br><br><br><br><br><br><br><br>
+                <div class="payment">
+                <button onclick="succesfullPayment()" style="display: block;" id="applyCardPayment">Πληρωμή αυτοκινήτου</button>
                     </div>
                 </div>
             </div>
-        
+        <div class="succesfull-payment"style="display: none;"id="succesfullpayment">
+
+            
+
+
+
+        </div>
 
     </div>
 </div>
 <script>
+    function succesfullPayment(){
+        document.getElementById("cardPayment").style.display = "none";
+        document.getElementById("succesfullpayment").style.display = "block";
+    }
+
+
+</script>
+<script>
     $(document).ready(function() {
-        // Εφαρμογή jQuery UI DatePicker στα πεδία ημερομηνίας
-        $("#pickup-date").datepicker();
-        $("#return-date").datepicker();
+    $("#pickup-date").datepicker({
+        minDate: 1,
+        onSelect: function(selectedDate) {
+            $("#return-date").datepicker("option", "minDate", selectedDate);
+        }
     });
+    $("#return-date").datepicker({
+        minDate: 1
+    });
+});
+
     function checkInputLength(input) {
     if (input.value.length > 16) {
-        input.value = input.value.slice(0, 16); // Εάν η τιμή έχει περισσότερους από 16 χαρακτήρες, κόβουμε τα υπόλοιπα
+        input.value = input.value.slice(0, 16);
     }
 }
 function checkInputLength03(input) {
@@ -324,6 +384,7 @@ function checkInputLength03(input) {
     </script>
 <script>
  function applyFilter() { // prwto panel
+    document.getElementById("carpanel").style.display = "block";
         var pickupDate = document.getElementById("pickup-date").value;
         var returnDate = document.getElementById("return-date").value;
         var errorMessage = document.getElementById("error-message");
@@ -453,14 +514,28 @@ function selectCar(){   //to deytero panel
 </script>
 <script> //to teleytaio panel
     function payment(){
-        document.getElementById("name1").style.display = "none";
+        
+        var checkBoxcash=false;
+        var checkBox=false;
+         checkBoxcash = document.getElementById("cash");
+         checkBox = document.getElementById("credit");
+         namecheck = document.getElementById("Name");
+         surnameCheck= document.getElementById("Surname");
+        
+        if(checkBox.checked==true){
+            document.getElementById("name1").style.display = "none";
         document.getElementById("carpanel").style.display = "none";
         document.getElementById("filterid").style.display = "none";
         document.getElementById("textTitle").style.display = "none";
-        var checkBox = document.getElementById("credit");
-        if(checkBox.checked==true){
-            document.getElementById("cardPayment").style.display = "block";
+        document.getElementById("paymentTitle").style.display = "block";
+        document.getElementById("cardPayment").style.display = "block";
+        }else if(checkBoxcash.checked==true){
+            alert("oloklirwsi");
+        }else if(checkBox.checked==false && checkBoxcash.checked==false){
+            alert("Παρακαλώ διαλέξτε τρόπο πληρωμής!")
+            
         }
+        
       
 
     }
