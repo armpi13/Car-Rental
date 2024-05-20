@@ -214,7 +214,7 @@
 </head>
 
 
-<h2 class="center-text" style="font-size: 38px; margin-top: 20px;"id="textTitle">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
+<h2 class="center-text" style="font-size: 38px; margin-top: 20px;"id="paymentTitle">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
 <h2 class="center-text" style="font-size: 35px; display: none; margin-top: 20px;"id="paymentTitle">Παρακαλώ πληκτρολογήστε τα στοιχεία τις κάρτας σας!</h2>
 <div class="grid-container">
     <!-- Πάνελ φίλτρων -->
@@ -293,6 +293,10 @@
           
             <div class="password-container">
            <br><br> <input type="text" id="Name" style="font-size:13pt" size="20" placeholder="  Ονομα"><br><br>
+           <span class="error-message" id="name-error">Το όνομα είναι υποχρεωτικό</span>
+
+           <li class="rq">*Required Field</li>
+           
            <br> <input type="text" id="Surname" style="font-size:13pt" size="20" placeholder="  Επώνυμο"><br><br>
            <div class="filter1-title">
             <h1>Ημερομηνία γέννησης</h1>
@@ -346,6 +350,33 @@
 
 
 </script>
+<script>
+    function checkEmpty(){
+       var testName=document.getElementById("Name").value;
+       if (testName.value.length==0 ){
+        alert ('test');
+       }
+
+
+    }
+
+
+
+</script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#Name').blur(function() {
+            var nameValue = $(this).val().trim();
+            if (nameValue === '') {
+                $('#name-error').show();
+            } else {
+                $('#name-error').hide();
+            }
+        });
+    });
+    </script>
 <script>
     $(document).ready(function() {
     $("#pickup-date").datepicker({
