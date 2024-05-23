@@ -16,7 +16,7 @@
 
     /* CSS για το πάνελ φίλτρων */
     .filter-panel {
-        background-color: #aecf1a;
+        background-color: #fafafa;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -70,26 +70,23 @@
     .name-panel button {
         width: 100%;
         padding: 10px;
-        background-color: #4604c0;
+        background-color: #4CAF50;
         color: white;
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-
     /* Όταν το ποντίκι περνάει πάνω από το κουμπί, αλλάζει το χρώμα του φόντου */
     .filter-panel button:hover {
         background-color: #040704;
     }
-
     /* Στυλ για το μήνυμα λάθους */
     .error-message {
         color: #ff0000;
         font-size: 14px;
         margin-top: 10px;
     }
-
     /* Πλέγμα (grid) για διάταξη */
     .grid-container {
         display: grid;
@@ -97,10 +94,9 @@
         gap: 20px;
         padding: 20px;
     }
-    
     /* CSS για το δεύτερο πάνελ με τις φωτογραφίες */
     .photo-panel {
-        background-color: #aecf1a;
+        background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -111,7 +107,6 @@
     background-size: cover; /* Εξασφαλίζει ότι η εικόνα θα επεκταθεί για να καλύψει ολόκληρη την περιοχή του φόντου */
     background-repeat: no-repeat; /* Αποτρέπει την επανάληψη της εικόνας */
 }
-
     /* Στυλ για τον τίτλο του δεύτερου πάνελ */
     .photo-title {
         margin-top: 0;
@@ -144,7 +139,7 @@
         left: 40%;
         height:42%;
         width: 17%;
-        background-color: #5b4986;
+        background-color: #8d8d8d;
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -152,16 +147,16 @@
 
     }
     .payment button {
+        position: static;
         width: 100%;
         padding: 10px;
-        background-color: #7d7b81;
-        color: white;
+        background-color: #4CAF50;
+        color: rgb(0, 0, 0);
         border: none;
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
     }
-
     /* Στυλ για τις φωτογραφίες */
     .car-photo {
         display: block;
@@ -173,7 +168,6 @@
         position: relative;
         left: 370px;
     }
-   
     .password-container input {
     flex: 1;
     background-color: #e9e9e9;
@@ -191,6 +185,7 @@
     border-radius: 8px;
     border: none;
 }
+
 .succesfull-payment{
     position: fixed;
         margin-top: 3%;
@@ -202,19 +197,16 @@
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         max-height: auto;
-
-
-
 }
 #paymentTitle {
     color: white; /* Ορίζει το χρώμα των γραμμάτων σε λευκό */
 }
-
+#welcomeTitle {
+    color: white; /* Ορίζει το χρώμα των γραμμάτων σε λευκό */
+}
 </style>
 </head>
-
-
-<h2 class="center-text" style="font-size: 38px; margin-top: 20px;"id="paymentTitle">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
+<h2 class="center-text" style="font-size: 38px; margin-top: 20px;"id="welcomeTitle">Καλώς ήρθατε στην ιστοσελίδα κράτησης αυτοκινήτων!</h2>
 <h2 class="center-text" style="font-size: 35px; display: none; margin-top: 20px;"id="paymentTitle">Παρακαλώ πληκτρολογήστε τα στοιχεία τις κάρτας σας!</h2>
 <div class="grid-container">
     <!-- Πάνελ φίλτρων -->
@@ -222,14 +214,14 @@
         <h3 class="filter-title">Επιλέξτε φίλτρα:</h3>
         <div>
             <h4 class="filter-title">Μάρκα:</h4>
-            <select class="filter-select">
+            <select class="filter-select"onchange="closeWindows()">
                 <option value="Audi">Audi</option>
                 <option value="Mercedes">Mercedes</option>
             </select>
         </div>
         <div>
             <h4 class="filter-title">Κυβικά:</h4>
-            <select class="filter-select">
+            <select class="filter-select" onchange="closeWindows()">
                 <option value="1600cc">1600cc</option>
                 <option value="1800cc">1800cc</option>
                 <option value="2000cc">2000cc</option>
@@ -237,7 +229,7 @@
         </div>
         <div>
             <h4 class="filter-title">Τοποθεσία παραλαβής:</h4>
-            <select class="filter-select">
+            <select class="filter-select"onchange="closeWindows()">
                 <option value="Athens">Αθήνα</option>
                 <option value="Eleftherios Venizelos Airport">Αεροδρόμιο Ελευθέριος Βενιζέλος</option>
                 <option value="Piraeus">Πειραιάς</option>
@@ -245,7 +237,7 @@
         </div>
         <div>
             <h4 class="filter-title">Τοποθεσία επιστροφής:</h4>
-            <select class="filter-select">
+            <select class="filter-select"onchange="closeWindows()">
                 <option value="Athens">Αθήνα</option>
                 <option value="Eleftherios Venizelos Airport">Αεροδρόμιο Ελευθέριος Βενιζέλος</option>
                 <option value="Piraeus">Πειραιάς</option>
@@ -254,14 +246,13 @@
         <div>
             <h4 class="filter-title">Ημερομηνία παραλαβής:</h4>
             <input type="text" class="filter-date" id="pickup-date">
+            
         </div>
         <div>
             <h4 class="filter-title">Ημερομηνία επιστροφής:</h4>
             <input type="text" class="filter-date" id="return-date">
         </div>
         <div id="error-message" class="error-message"></div>
-
-
     <button onclick="applyFilter()">Εφαρμογή Φίλτρου</button>
     </div>
     <div class="photo-panel"id="carpanel"style="display: none;">
@@ -290,102 +281,78 @@
             <div class="name-title">
             <h1>Συμπληρώστε τα στοιχεία σας</h1>
             </div>
-          
             <div class="password-container">
-           <br><br> <input type="text" id="Name" style="font-size:13pt" size="20" placeholder="  Ονομα"><br><br>
-           <span class="error-message" id="name-error">Το όνομα είναι υποχρεωτικό</span>
-
-           <li class="rq">*Required Field</li>
-           
+           <br><br> <input type="text" id="Name" style="font-size:13pt" size="20" placeholder="  Ονομα"><br><br>      
            <br> <input type="text" id="Surname" style="font-size:13pt" size="20" placeholder="  Επώνυμο"><br><br>
            <div class="filter1-title">
-            <h1>Ημερομηνία γέννησης</h1>
-           <br> <input type="date" id="dateOfBirth" style="font-size:13pt" max="2003-12-31" size="20" placeholder="Ηλικία"><br><br>
+            <h1>Ημερομηνία γέννησης:</h1>
+           <br> <input type="date" id="dateOfBirth" style="font-size:13pt" max="2003-12-31" min="1950-01-01" size="20" placeholder="Ηλικία"><br><br>
            </div>
            <br> <input type="email" id="email" style="font-size:13pt" size="20" placeholder="  email"><br><br>
            <br> <input type="number" id="phoneNumber" style="font-size:13pt" size="20" placeholder="  Τηλέφωνο Επικοινωνίας"><br><br>
            <input type="checkbox" id="cash" name="cash" value="cash" onchange="handleCheckboxChange(this)">
-           <label for="cash"> Μετρητά στο κατάστημα </label><br><br>
-           
+           <label for="cash"> Μετρητά στο κατάστημα </label><br><br>       
            <input type="checkbox" id="credit" name="credit" value="credit" onchange="handleCheckboxChange(this)">
            <label for="credit">Χρεωστική/Πιστωτική Κάρτα</label><br>
-           <br><div style="font-size: large;" id="rental-days-container"></div><br>
-           
+           <br><div style="font-size: large;" id="rental-days-container"></div><br> 
            <div class="name-panel">
            <button onclick="payment()"style="display: block;"id="applycarbutt1">Επόμενο Βήμα</button>
            <div id="error-message" class="error-message"></div>
-           
-            
-
            </div>
                 </div>
         </div>
-
              <div class="card_payment-field" style="display: none;"id="cardPayment">
                 <div class="card-container">
                 <br> <input type="number" id="cardNumbers" oninput="checkInputLength(this)" style="display: block;" style="font-size: 13pt;"  placeholder="Αριθμός Κάρτας"><br><br>
                 <input type="number" id="cvvNumber" oninput="checkInputLength03(this)" style="display: block;" style="font-size: 13pt;"  placeholder="Αριθμός Ασφαλείας"><br><br>
                 <input type="text" id ="cardHolderName" style="display: block;" style="font-size: 13pt;" placeholder="Ονομα κατόχου"><br><br>
-                <input type="month" id ="dateofcard" min="2025-01" style="display: block;" style="font-size: 13pt;" placeholder="Ημερομηνία λήξης"><br><br><br><br><br><br><br><br>
+                <input type="month" id ="dateofcard" min="2025-01" max="2035-01" style="display: block;" style="font-size: 13pt;" placeholder="Ημερομηνία λήξης"><br><br><br><br><br><br><br><br>
                 <div class="payment">
                 <button onclick="succesfullPayment()" style="display: block;" id="applyCardPayment">Πληρωμή αυτοκινήτου</button>
                     </div>
                 </div>
             </div>
         <div class="succesfull-payment"style="display: none;"id="succesfullpayment">
-
-            
-
-
-
+            <h1 style="text-align: center;">Συγχαρητήρια η κράτηση ολοκληρώθηκε με επιτυχία!</h1>
         </div>
-
     </div>
 </div>
-<script>
+<script> //  κλεινει τα παραθυρα
+function closeWindows(){
+    document.getElementById("carpanel").style.display = "none";
+    document.getElementById("name1").style.display = "none";
+
+}
+
+
+</script>
+<script> // το παραθυρο για την ολοκληρωμενη πληρωμη
     function succesfullPayment(){
+            var numberCardCheck = document.getElementById("cardNumbers");
+            var cvvCheck = document.getElementById("cvvNumber");
+            var nameCheck = document.getElementById("cardHolderName");
+            var monthCheck = document.getElementById("dateofcard");
+            if (numberCardCheck.value.length === 0 || cvvCheck.value.length === 0 || nameCheck.value.length === 0 || monthCheck.value.length === 0){
+                alert("Παρακαλώ συμπληρώστε όλα τα στοιχεία");
+            } else{
         document.getElementById("cardPayment").style.display = "none";
+        document.getElementById("paymentTitle").style.display = "none";
+        document.getElementById("welcomeTitle").style.display = "none";
         document.getElementById("succesfullpayment").style.display = "block";
+                }
     }
-
-
 </script>
-<script>
-    function checkEmpty(){
-       var testName=document.getElementById("Name").value;
-       if (testName.value.length==0 ){
-        alert ('test');
-       }
-
-
-    }
-
-
-
-</script>
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function() {
-        $('#Name').blur(function() {
-            var nameValue = $(this).val().trim();
-            if (nameValue === '') {
-                $('#name-error').show();
-            } else {
-                $('#name-error').hide();
-            }
-        });
-    });
-    </script>
-<script>
+<script> // για την ημερομινια μαξ και μιν
     $(document).ready(function() {
     $("#pickup-date").datepicker({
+        dateFormat: "dd/mm/yy",
         minDate: 1,
         onSelect: function(selectedDate) {
             $("#return-date").datepicker("option", "minDate", selectedDate);
         }
     });
     $("#return-date").datepicker({
+        dateFormat: "dd/mm/yy",
         minDate: 1
     });
 });
@@ -399,12 +366,9 @@ function checkInputLength03(input) {
     if (input.value.length > 3) {
         input.value = input.value.slice(0, 3);
     }
-}
-
-   
+} 
 </script>
-
-<script>
+<script> // αναλασει τα Checkbox
     function handleCheckboxChange(checkbox) {
       var otherCheckboxId = checkbox.id === 'cash' ? 'credit' : 'cash'; // Ανάλογα ποιο checkbox επιλέγεται, βρίσκουμε το ID του άλλου
       var otherCheckbox = document.getElementById(otherCheckboxId);
@@ -412,16 +376,13 @@ function checkInputLength03(input) {
         otherCheckbox.checked = false; // Απενεργοποίηση του άλλου checkbox
       }
     }
-    </script>
-<script>
+</script>
+<script>// για την εφαρμογη φιλτρων
  function applyFilter() { // prwto panel
     document.getElementById("carpanel").style.display = "block";
         var pickupDate = document.getElementById("pickup-date").value;
         var returnDate = document.getElementById("return-date").value;
         var errorMessage = document.getElementById("error-message");
-
-        // Έλεγχος αν οι ημερομηνίες είναι κενές
-        
        if (pickupDate === "" || returnDate === "") {
            errorMessage.innerText = "Παρακαλώ εισάγετε τις ημερομηνίες παραλαβής και επιστροφής.";
          return;
@@ -431,96 +392,54 @@ function checkInputLength03(input) {
         var engineFilter = document.getElementsByClassName("filter-select")[1].value;
         var pickupLocationFilter = document.getElementsByClassName("filter-select")[2].value;
         var returnLocationFilter = document.getElementsByClassName("filter-select")[3].value;
-        
-
+        document.getElementById("textmerc1800").style.display = "none";
+        document.getElementById("textmerc1600").style.display = "none";
+        document.getElementById("textmerc2000").style.display = "none";
+        document.getElementById("audi1600").style.display = "none";
+        document.getElementById("audi1800").style.display = "none";
+        document.getElementById("audi2000").style.display = "none";
+        document.getElementById("mercedesPhoto1").style.display = "none";
+        document.getElementById("mercedesPhoto").style.display = "none";
+        document.getElementById("mercedesPhoto2").style.display = "none";
 if (brandFilter == "Mercedes" &&  engineFilter == "1600cc") {
     document.getElementById("mercedesPhoto1").style.display = "block";
-    document.getElementById("mercedesPhoto").style.display = "none";
-    document.getElementById("mercedesPhoto2").style.display = "none";
     document.getElementById("textmerc1600").style.display = "block";
-    document.getElementById("textmerc1800").style.display = "none";
-    document.getElementById("textmerc2000").style.display = "none";
-    document.getElementById("audi1600").style.display = "none";
-    document.getElementById("audi1800").style.display = "none";
-    document.getElementById("audi2000").style.display = "none";
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
-    document.getElementById("name1").style.display = "none";
     testvalue=32;
 }else if (brandFilter=="Mercedes" && engineFilter =="1800cc"){
     document.getElementById("mercedesPhoto").style.display = "block";
-    document.getElementById("mercedesPhoto1").style.display = "none";
-    document.getElementById("mercedesPhoto2").style.display = "none";
     document.getElementById("textmerc1800").style.display = "block";
-    document.getElementById("textmerc1600").style.display = "none";
-    document.getElementById("textmerc2000").style.display = "none";
-    document.getElementById("audi1600").style.display = "none";
-    document.getElementById("audi1800").style.display = "none";
-    document.getElementById("audi2000").style.display = "none";
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
-    document.getElementById("name1").style.display = "none";
     testvalue=40;
 }else if(brandFilter =="Mercedes" && engineFilter =="2000cc"){
     document.getElementById("mercedesPhoto2").style.display = "block";
-    document.getElementById("mercedesPhoto1").style.display = "none";
-    document.getElementById("mercedesPhoto").style.display = "none";
     document.getElementById("textmerc2000").style.display = "block";
-    document.getElementById("textmerc1800").style.display = "none";
-    document.getElementById("textmerc1600").style.display = "none";
-    document.getElementById("audi1600").style.display = "none";
-    document.getElementById("audi1800").style.display = "none";
-    document.getElementById("audi2000").style.display = "none";
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
-    document.getElementById("name1").style.display = "none";
     testvalue=60;
 }else  if (brandFilter == "Audi" &&  engineFilter == "1600cc") {
     document.getElementById("audi1600").style.display = "block";
-    document.getElementById("audi1800").style.display = "none";
-    document.getElementById("audi2000").style.display = "none";
     document.getElementById("textmerc1600").style.display = "block";
-    document.getElementById("textmerc1800").style.display = "none";
-    document.getElementById("textmerc2000").style.display = "none";
-    document.getElementById("mercedesPhoto1").style.display = "none";
-    document.getElementById("mercedesPhoto").style.display = "none";
-    document.getElementById("mercedesPhoto2").style.display = "none";
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
-    document.getElementById("name1").style.display = "none";
+    
     testvalue=32;
 }else if (brandFilter=="Audi" && engineFilter =="1800cc"){
     document.getElementById("audi1800").style.display = "block";
-    document.getElementById("audi1600").style.display = "none";
-    document.getElementById("audi2000").style.display = "none";
-    document.getElementById("textmerc1600").style.display = "none";
-    document.getElementById("textmerc1800").style.display = "block";
-    document.getElementById("textmerc2000").style.display = "none";
-    document.getElementById("mercedesPhoto1").style.display = "none";
-    document.getElementById("mercedesPhoto").style.display = "none";
-    document.getElementById("mercedesPhoto2").style.display = "none";
+    document.getElementById("textmerc1800").style.display = "block";  
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
-    document.getElementById("name1").style.display = "none";
     testvalue=42;
 }else if(brandFilter =="Audi" && engineFilter =="2000cc"){
     document.getElementById("audi2000").style.display = "block";
-    document.getElementById("audi1600").style.display = "none";
-    document.getElementById("audi1800").style.display = "none";
-    document.getElementById("textmerc1600").style.display = "none";
-    document.getElementById("textmerc1800").style.display = "none";
     document.getElementById("textmerc2000").style.display = "block";
-    document.getElementById("mercedesPhoto1").style.display = "none";
-    document.getElementById("mercedesPhoto").style.display = "none";
-    document.getElementById("mercedesPhoto2").style.display = "none";
     document.getElementById("applycarbutton").style.display = "block";
     document.getElementById("applycarbutton1").style.display = "block";
-    document.getElementById("name1").style.display = "none";
-    testvalue=60;
-}
 
-        
-        
+    testvalue=60;
+}     
 }
 </script>
 <script>
@@ -528,51 +447,62 @@ function selectCar(){   //to deytero panel
     document.getElementById("name1").style.display = "block";
     var pickupDate = $("#pickup-date").datepicker("getDate");
     var returnDate = $("#return-date").datepicker("getDate");
-
     if (pickupDate && returnDate) {
         var millisecondsPerDay = 1000 * 60 * 60 * 24;
         var difference = returnDate.getTime() - pickupDate.getTime();
         var days = Math.ceil(difference / millisecondsPerDay);
-
         // Εμφανίζουμε τον αριθμό των ημερών στον κατάλληλο container
-        $("#rental-days-container").text( days +" ημέρες ενοικίασης και το κόστος είναι "+days*testvalue+"€");
+        days1=days +1;
+        $("#rental-days-container").text( days1 +" ημέρες ενοικίασης και το κόστος είναι "+days1*testvalue+"€");
     } else {
         console.log("Παρακαλώ επιλέξτε τις ημερομηνίες παραλαβής και επιστροφής.");
     }
-
-
 }
 </script>
 <script> //to teleytaio panel
     function payment(){
-        
         var checkBoxcash=false;
         var checkBox=false;
          checkBoxcash = document.getElementById("cash");
          checkBox = document.getElementById("credit");
-         namecheck = document.getElementById("Name");
-         surnameCheck= document.getElementById("Surname");
-        
-        if(checkBox.checked==true){
-            document.getElementById("name1").style.display = "none";
-        document.getElementById("carpanel").style.display = "none";
-        document.getElementById("filterid").style.display = "none";
-        document.getElementById("textTitle").style.display = "none";
-        document.getElementById("paymentTitle").style.display = "block";
-        document.getElementById("cardPayment").style.display = "block";
-        }else if(checkBoxcash.checked==true){
-            alert("oloklirwsi");
-        }else if(checkBox.checked==false && checkBoxcash.checked==false){
-            alert("Παρακαλώ διαλέξτε τρόπο πληρωμής!")
-            
+         var checkBoxcash = document.getElementById("cash");
+            var checkBox = document.getElementById("credit");
+            var namecheck = document.getElementById("Name");
+            var surnameCheck = document.getElementById("Surname");
+            var emailCheck = document.getElementById("email");
+            var phoneCheck = document.getElementById("phoneNumber");
+            var datecheck = document.getElementById("dateOfBirth");
+
+            if (namecheck.value.length === 0 || surnameCheck.value.length === 0 ||
+                emailCheck.value.length === 0 || phoneCheck.value.length === 0 ||
+                datecheck.value === null || datecheck.value === '') {
+                alert("Παρακαλώ συμπληρώστε όλα τα στοιχεία");
+                return;
+            }
+
+            if (checkBox.checked) {
+                document.getElementById("name1").style.display = "none";
+                document.getElementById("carpanel").style.display = "none";
+                document.getElementById("filterid").style.display = "none";
+                document.getElementById("welcomeTitle").style.display = "none";
+                document.getElementById("paymentTitle").style.display = "block";
+                document.getElementById("cardPayment").style.display = "block";
+            } else if (checkBoxcash.checked) {
+                document.getElementById("name1").style.display = "none";
+                document.getElementById("filterid").style.display = "none";
+                document.getElementById("carpanel").style.display = "none";
+                document.getElementById("paymentTitle").style.display = "none";
+                document.getElementById("welcomeTitle").style.display = "none";
+                document.getElementById("cardPayment").style.display = "none";
+                document.getElementById("succesfullpayment").style.display = "block";
+                
+            } else {
+                alert("Παρακαλώ διαλέξτε τρόπο πληρωμής!");
+            }
         }
+
         
-      
-
-    }
-
-
-
+    
 </script>
 </body>
 </html>
